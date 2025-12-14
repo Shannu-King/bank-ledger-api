@@ -1,0 +1,57 @@
+{
+	"info": {
+		"name": "Bank Ledger API Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Alice",
+			"request": {
+				"method": "POST",
+				"header": [
+					{ "key": "Content-Type", "value": "application/json" }
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"alice123\",\n    \"name\": \"Alice\",\n    \"type\": \"checking\"\n}"
+				},
+				"url": { "raw": "http://localhost:3000/api/accounts", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "accounts"] }
+			}
+		},
+		{
+			"name": "Create Bob",
+			"request": {
+				"method": "POST",
+				"header": [
+					{ "key": "Content-Type", "value": "application/json" }
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"bob456\",\n    \"name\": \"Bob\",\n    \"type\": \"savings\"\n}"
+				},
+				"url": { "raw": "http://localhost:3000/api/accounts", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "accounts"] }
+			}
+		},
+		{
+			"name": "Transfer Alice -> Bob",
+			"request": {
+				"method": "POST",
+				"header": [
+					{ "key": "Content-Type", "value": "application/json" }
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fromAccountId\": \"REPLACE_WITH_ALICE_UUID\",\n    \"toAccountId\": \"REPLACE_WITH_BOB_UUID\",\n    \"amount\": 100,\n    \"description\": \"Rent Payment\"\n}"
+				},
+				"url": { "raw": "http://localhost:3000/api/transfer", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "transfer"] }
+			}
+		},
+		{
+			"name": "Check Balance",
+			"request": {
+				"method": "GET",
+				"url": { "raw": "http://localhost:3000/api/accounts/REPLACE_WITH_UUID", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "accounts", "REPLACE_WITH_UUID"] }
+			}
+		}
+	]
+}
